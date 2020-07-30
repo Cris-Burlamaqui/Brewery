@@ -10,25 +10,46 @@ import XCTest
 @testable import Brewery
 
 class BreweryTests: XCTestCase {
+    
+    var contentView: ContentView!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        contentView = ContentView()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func firstSolution() throws {
+        
+        let correctBeerBatch = ["C", "C", "C", "C", "B"]
+        let clientList = ["5", "1 B 3 C 5 C", "2 C 3 B 4 C", "5 B"]
+        
+        contentView.generateBeerList(from: clientList)
+        
+        XCTAssertEqual(correctBeerBatch, contentView.beerBatch)
+    }
+    
+    func secondSolution() throws {
+
+        let correctBeerBatch = ["B", "B"]
+        let clientList = ["2", "1 C 2 B", "1 B"]
+
+        contentView.generateBeerList(from: clientList)
+
+        XCTAssertEqual(correctBeerBatch, contentView.beerBatch)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func noSolution() throws {
+
+        let correctBeerBatch = [String]()
+        let clientList = ["1", "1 C", "1 B"]
+
+        contentView.generateBeerList(from: clientList)
+
+        XCTAssertEqual(correctBeerBatch.isEmpty, contentView.beerBatch.isEmpty)
     }
 
 }
