@@ -12,15 +12,25 @@ struct ContentView: View {
     
     @ObservedObject var beerRequest = BeerRequest()
     
+    @State var beerBatch = [String]()
+    
+    @State private var showingAlert = false
+    
     var body: some View {
         NavigationView {
             VStack {
-                List(beerRequest.beerList) { beer in
-                    Text(beer.name)
+//                List(beerRequest.beerList) { beer in
+//                    Text(beer.name)
+//                }
+                List(beerBatch, id: \.self) { beer in
+                    Text(beer)
                 }
             }
             .navigationBarTitle("Beers")
             .onAppear(perform: consumeChallengeFile)
+            .alert(isPresented: $showingAlert) { () -> Alert in
+                Alert(title: Text("No solution"), message: Text("There's no solution which satisfies all customers."), dismissButton: .default(Text("OK")))
+            }
         }
     }
     
@@ -40,36 +50,91 @@ struct ContentView: View {
         guard allBeers.count > 1 else {
             return
         }
-        let size = Int(allBeers[0]) ?? 1
-        var beerDic = [String: String]()
         
-        for index in 1..<allBeers.count {
-            var id = ""
-            var value = ""
-            for letter in allBeers[index] {
-                if letter.isNumber {
-                    id = "\(letter)"
+        var clientList = generateClientList(from: allBeers)
+        let types = Int(allBeers[0]) ?? 1
+        var beers = Array(repeating: "", count: types)
+        
+        for clientBeers in clientList {
+            if clientBeers.count == 1 {
+                let index = clientBeers[0].prefix{ "0"..."9" ~= $0 }
+                let i = Int(index)! - 1
+                let type = clientBeers[0].deletingPrefix(String(index))
+                
+                if beers[i].elementsEqual("") || beers[i].elementsEqual(type) {
+                    beers[i] = type
+                    clientList.removeFirst()
+                    continue
                 }
-                if letter.isLetter {
-                    value = "\(letter)"
+                else {
+                    break
                 }
             }
-            if id.count > 0 && value.count > 0 && beerDic.count <= size {
-                beerDic.updateValue(value, forKey: id)
+            else {
+                for (idx, beer) in clientBeers.enumerated() {
+                    let index = beer.prefix{ "0"..."9" ~= $0 }
+                    let i = Int(index)! - 1
+                    let type = beer.deletingPrefix(String(index))
+                    if beers[i].elementsEqual(type) || beers[i].elementsEqual("") {
+                        if type.elementsEqual("B") && idx != (clientBeers.endIndex - 1) {
+                            continue
+                        }
+                        beers[i] = type
+                        clientList.removeFirst()
+                        break
+                    }
+                }
             }
         }
-        let beerList = beerDic.sorted(by: { $0.key < $1.key })
-        let beersMap = beerList.map { $0.key }
-        var beersToRequest = ""
-        for beer in beersMap {
-            beersToRequest += "\(beer)%7C"
+        
+        if beers.contains("") {
+            for (i, beer) in beers.enumerated() {
+                if beer.elementsEqual("") {
+                    beers[i] = "C"
+                }
+            }
         }
-        beerRequest.getBeerData(from: beersToRequest)
+        
+        if clientList.count > 0 {
+            showingAlert = true
+        }
+        else {
+            beerBatch = beers
+        }
+    }
+    
+    func generateClientList(from allCustomersBeers: [String]) -> [[String]] {
+        
+        var clients = [[String]]()
+        
+        for index in 1..<allCustomersBeers.count where allCustomersBeers[index].count > 1 {
+            
+            let beerTypes = allCustomersBeers[index].replacingOccurrences(of: " ", with: "")
+            var types = [String]()
+            var prefix = ""
+            
+            for item in beerTypes {
+                prefix += String(item)
+                if item.isLetter {
+                    types.append(prefix)
+                    prefix = ""
+                }
+            }
+            clients.append(types)
+        }
+        return clients.sorted { $0.count < $1.count }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
     }
 }
