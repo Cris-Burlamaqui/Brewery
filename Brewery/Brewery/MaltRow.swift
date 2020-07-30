@@ -15,14 +15,14 @@ struct MaltRow: View {
     var body: some View {
         List {
             Text(malt.name)
-                .fontWeight(.medium)
+                .font(.headline)
+                .foregroundColor(.gray)
             
             HStack {
                 Text("amount:")
-                .fontWeight(.medium)
                 Spacer()
-                Text("value: \(malt.amount.value, specifier: "%g")")
-                Text("unit: \(malt.amount.unit)")
+                Text("\(malt.amount.value, specifier: "%g") \(malt.amount.unit)")
+                    .foregroundColor(.gray)
             }
         }
     }

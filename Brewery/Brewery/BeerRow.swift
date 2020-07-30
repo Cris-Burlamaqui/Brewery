@@ -16,36 +16,54 @@ struct BeerRow: View {
     var beerType: String
     
     @State private var beerImage = UIImage(named: "beer_example")!
+    @State var imageLoaded = false
     
     var body: some View {
-        HStack {
-            
-            Image(uiImage: beerImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 80, height: 100)
-            
-            VStack(alignment: .leading) {
-                Text(beer.name)
-                    .font(.headline)
-                    .foregroundColor(.gray)
-                HStack {
-                    Text("abv:")
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
+        NavigationLink(destination: BeerDetail(beer: beer, beerType: beerType, beerImage: beerImage, imageLoaded: imageLoaded)) {
+            HStack {
+                
+                ZStack {
+                    Color(.black)
                     
-                    Text("\(beer.abv, specifier: "%g")")
-                        .foregroundColor(beer.abv <= 5 ? .green : .red)
+                    if imageLoaded {
+                        Image(uiImage: beerImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding([.top, .bottom])
+                    }
+                    else {
+                        
+                        Text("Loading...")
+                            .font(.system(size: 13))
+                            .foregroundColor(.white)
+                    }
+                        
+                        
                 }
-            }
-            Spacer()
-            Text(beerType)
-                .font(.caption)
-                .fontWeight(.black)
-                .padding(8)
-                .background(Self.colors[beerType, default: .black])
-                .foregroundColor(.white)
+                .frame(width: 80, height: 100)
                 .clipShape(Circle())
+                
+                VStack(alignment: .leading) {
+                    Text(beer.name)
+                        .font(.headline)
+                    HStack {
+                        Text("abv:")
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                        
+                        Text("\(beer.abv, specifier: "%g")")
+                            .foregroundColor(beer.abv <= 5 ? .green : .orange)
+                    }
+                }
+                Spacer()
+                Text(beerType)
+                    .font(.caption)
+                    .fontWeight(.black)
+                    .padding(8)
+                    .background(Self.colors[beerType, default: .black])
+                    .foregroundColor(.white)
+                    .clipShape(Circle())
+            }
         }
         .onAppear(perform: displayBeerImage)
     }
@@ -59,6 +77,7 @@ struct BeerRow: View {
             
             DispatchQueue.main.async {
                 self.beerImage = image
+                self.imageLoaded = true
             }
         }
         task.resume()

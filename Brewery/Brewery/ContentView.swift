@@ -23,7 +23,7 @@ struct ContentView: View {
                     BeerRow(beer: beer, beerType: self.beerBatch[beer.id - 1])
                 }
             }
-            .navigationBarTitle("Batch")
+            .navigationBarTitle("Beer Batch")
             .onAppear(perform: consumeChallengeFile)
             .alert(isPresented: $showingAlert) { () -> Alert in
                 Alert(title: Text("No solution"), message: Text("There's no solution which satisfies all customers."), dismissButton: .default(Text("OK")))

@@ -16,63 +16,74 @@ struct BeerDetail: View {
     var beer: Beer
     var beerType: String
     var beerImage: UIImage
+    var imageLoaded = false
     
     var body: some View {
         
-        NavigationView {
-        
-            VStack {
+        VStack {
+            
+            ZStack(alignment: .bottomTrailing) {
                 ZStack {
                     Color(.black)
-                    ZStack(alignment: .bottomTrailing) {
+                    
+                    if imageLoaded {
                         Image(uiImage: beerImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                        Text("\(Self.typeDesc[beerType]!)")
-                            .padding(4)
-                            .background(Self.typeColor[beerType, default: .black])
-                            .clipShape(RoundedRectangle(cornerRadius: 3))
-                            .font(.caption)
+                            .padding()
+                    }
+                    else {
+                        Text("Loading...")
                             .foregroundColor(.white)
-                            .offset(x: -5, y: -5)
                     }
                 }
                 
-                HStack{
-                    Spacer()
-                    HStack(alignment: .center) {
-                        Text("abv:")
-                        Text("\(beer.abv, specifier: "%g")")
-                            .padding(8)
-                            .background(beer.abv <= 5 ? Color.green : Color.red)
-                            .clipShape(Circle())
-                    }
+                Text("\(Self.typeDesc[beerType]!)")
+                    .padding(4)
+                    .background(Self.typeColor[beerType, default: .black])
+                    .clipShape(RoundedRectangle(cornerRadius: 3))
+                    .font(.system(size: 13))
+                    .foregroundColor(.white)
+                    .offset(x: -5, y: -5)
+            }
+            
+            HStack{
+                Spacer()
+                HStack(alignment: .center) {
+                    Text("abv:")
+                    Text("\(beer.abv, specifier: "%g")")
+                        .font(.system(size: 14, weight: .bold))
+                        .padding(8)
+                        .background(beer.abv <= 5 ? Color.green : Color.orange)
+                        .clipShape(Circle())
+                        .foregroundColor(.white)
                 }
+            }
+            
+            Text(beer.description)
                 .padding()
-                
-                Text(beer.description)
-                    .padding()
-                
-                Form {
-                    Section(header: Text("Malts").font(.headline)) {
-                        List {
-                            ForEach(0..<beer.ingredients.malt.count) { idx in
-                                MaltRow(malt: self.beer.ingredients.malt[idx])
-                            }
+            
+            Form {
+                Section(header: Text("Malts").font(.headline).foregroundColor(.black)) {
+                    List {
+                        ForEach(0..<beer.ingredients.malt.count) { idx in
+                            MaltRow(malt: self.beer.ingredients.malt[idx])
                         }
                     }
-                    
-                    Section(header: Text("Hops").font(.headline)) {
-                        List() {
-                            ForEach(0..<beer.ingredients.hops.count) { idx in
-                                HopRow(hop: self.beer.ingredients.hops[idx])
-                            }
+                }
+                .padding([.top])
+                
+                Section(header: Text("Hops").font(.headline).foregroundColor(.black)) {
+                    List() {
+                        ForEach(0..<beer.ingredients.hops.count) { idx in
+                            HopRow(hop: self.beer.ingredients.hops[idx])
                         }
                     }
                 }
             }
-            .navigationBarTitle(Text("\(beer.name)"))
+            .navigationBarTitle(Text(beer.name), displayMode: .inline)
         }
+        
     }
 }
 

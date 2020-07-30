@@ -15,18 +15,29 @@ struct HopRow: View {
     var body: some View {
         List {
             Text(hop.name)
-                .fontWeight(.medium)
+                .font(.headline)
+                .foregroundColor(.gray)
             
             HStack {
                 Text("amount:")
-                    .fontWeight(.medium)
                 Spacer()
-                Text("value: \(hop.amount.value, specifier: "%g")")
-                Text("unit: \(hop.amount.unit)")
+                Text("\(hop.amount.value, specifier: "%g") \(hop.amount.unit)")
+                    .foregroundColor(.gray)
             }
             
-            Text("add: \(hop.add)")
-            Text("attribute: \(hop.attribute)")
+            HStack {
+                Text("add:")
+                Spacer()
+                Text("\(hop.add)")
+                    .foregroundColor(.gray)
+            }
+            
+            HStack {
+                Text("attribute:")
+                Spacer()
+                Text("\(hop.attribute)")
+                    .foregroundColor(.gray)
+            }
             
         }
     }
