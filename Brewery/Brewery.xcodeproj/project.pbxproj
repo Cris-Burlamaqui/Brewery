@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F506731024D2E13E00E3CEDA /* BeerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506730F24D2E13E00E3CEDA /* BeerRow.swift */; };
+		F506731224D2F4FE00E3CEDA /* BeerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506731124D2F4FE00E3CEDA /* BeerDetail.swift */; };
+		F506731424D2F80400E3CEDA /* MaltRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506731324D2F80400E3CEDA /* MaltRow.swift */; };
+		F506731624D2FA4400E3CEDA /* HopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F506731524D2FA4400E3CEDA /* HopRow.swift */; };
 		F519958E24D09B2B00460996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F519958D24D09B2B00460996 /* AppDelegate.swift */; };
 		F519959024D09B2B00460996 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F519958F24D09B2B00460996 /* SceneDelegate.swift */; };
 		F519959224D09B2B00460996 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F519959124D09B2B00460996 /* ContentView.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F506730F24D2E13E00E3CEDA /* BeerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRow.swift; sourceTree = "<group>"; };
+		F506731124D2F4FE00E3CEDA /* BeerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetail.swift; sourceTree = "<group>"; };
+		F506731324D2F80400E3CEDA /* MaltRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaltRow.swift; sourceTree = "<group>"; };
+		F506731524D2FA4400E3CEDA /* HopRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopRow.swift; sourceTree = "<group>"; };
 		F519958A24D09B2B00460996 /* Brewery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F519958D24D09B2B00460996 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F519958F24D09B2B00460996 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +102,10 @@
 				F519958D24D09B2B00460996 /* AppDelegate.swift */,
 				F519958F24D09B2B00460996 /* SceneDelegate.swift */,
 				F519959124D09B2B00460996 /* ContentView.swift */,
+				F506730F24D2E13E00E3CEDA /* BeerRow.swift */,
+				F506731124D2F4FE00E3CEDA /* BeerDetail.swift */,
+				F506731324D2F80400E3CEDA /* MaltRow.swift */,
+				F506731524D2FA4400E3CEDA /* HopRow.swift */,
 				F519959324D09B2D00460996 /* Assets.xcassets */,
 				F519959824D09B2D00460996 /* LaunchScreen.storyboard */,
 				F519959B24D09B2D00460996 /* Info.plist */,
@@ -240,13 +252,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F506731424D2F80400E3CEDA /* MaltRow.swift in Sources */,
+				F506731624D2FA4400E3CEDA /* HopRow.swift in Sources */,
 				F51995B524D0BD5900460996 /* Method.swift in Sources */,
 				F519958E24D09B2B00460996 /* AppDelegate.swift in Sources */,
 				F51995B724D0BE8700460996 /* Ingredients.swift in Sources */,
 				F519959024D09B2B00460996 /* SceneDelegate.swift in Sources */,
 				F519959224D09B2B00460996 /* ContentView.swift in Sources */,
 				F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */,
+				F506731024D2E13E00E3CEDA /* BeerRow.swift in Sources */,
 				F51995B324D0BCC700460996 /* Beer.swift in Sources */,
+				F506731224D2F4FE00E3CEDA /* BeerDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

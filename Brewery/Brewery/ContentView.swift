@@ -19,14 +19,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                List(beerRequest.beerList) { beer in
-//                    Text(beer.name)
-//                }
-                List(beerBatch, id: \.self) { beer in
-                    Text(beer)
+                List(beerRequest.beerList) { beer in
+                    BeerRow(beer: beer, beerType: self.beerBatch[beer.id - 1])
                 }
             }
-            .navigationBarTitle("Beers")
+            .navigationBarTitle("Batch")
             .onAppear(perform: consumeChallengeFile)
             .alert(isPresented: $showingAlert) { () -> Alert in
                 Alert(title: Text("No solution"), message: Text("There's no solution which satisfies all customers."), dismissButton: .default(Text("OK")))
@@ -99,7 +96,7 @@ struct ContentView: View {
             showingAlert = true
         }
         else {
-            beerBatch = beers
+            requestBeerData(from: beers)
         }
     }
     
@@ -123,6 +120,16 @@ struct ContentView: View {
             clients.append(types)
         }
         return clients.sorted { $0.count < $1.count }
+    }
+    
+    func requestBeerData(from beers: [String]) {
+        
+        var beersIds = ""
+        for idx in 0..<beers.count {
+            beersIds += "\(idx + 1)%7C"
+        }
+        beerRequest.getBeerData(from: beersIds)
+        beerBatch = beers
     }
 }
 

@@ -33,7 +33,7 @@ class BeerRequest: ObservableObject {
         }.resume()
     }
     
-    func retrieveBeer(from data: Data) {
+    private func retrieveBeer(from data: Data) {
         
         do {
             let decoder = JSONDecoder()
