@@ -23,7 +23,7 @@ struct BeerRow: View {
             HStack {
                 
                 ZStack {
-                    Color(.black)
+                    Color(.white)
                     
                     if imageLoaded {
                         Image(uiImage: beerImage)
@@ -35,13 +35,14 @@ struct BeerRow: View {
                         
                         Text("Loading...")
                             .font(.system(size: 13))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                     }
                         
                         
                 }
                 .frame(width: 80, height: 100)
                 .clipShape(Circle())
+                .overlay(Circle().stroke(Color.black, lineWidth: 2))
                 
                 VStack(alignment: .leading) {
                     Text(beer.name)

@@ -13,7 +13,6 @@ struct ContentView: View {
     @ObservedObject var beerRequest = BeerRequest()
     
     @State var beerBatch = [String]()
-    
     @State private var showingAlert = false
     
     var body: some View {
@@ -135,7 +134,11 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView().environment(\.colorScheme, .light)
+            
+            ContentView().environment(\.colorScheme, .dark)
+        }
     }
 }
 

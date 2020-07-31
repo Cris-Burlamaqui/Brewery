@@ -10,6 +10,8 @@ import SwiftUI
 
 struct BeerDetail: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     static let typeDesc: [String: String] = ["C":"Classic", "B":"Barrel Aged"]
     static let typeColor: [String: Color] = ["C": .blue, "B": .purple]
     
@@ -24,7 +26,7 @@ struct BeerDetail: View {
             
             ZStack(alignment: .bottomTrailing) {
                 ZStack {
-                    Color(.black)
+                    Color(colorScheme == .dark ? .white : .black)
                     
                     if imageLoaded {
                         Image(uiImage: beerImage)
@@ -34,7 +36,7 @@ struct BeerDetail: View {
                     }
                     else {
                         Text("Loading...")
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                     }
                 }
                 
@@ -62,18 +64,25 @@ struct BeerDetail: View {
             
             Text(beer.description)
                 .padding()
+                .font(.system(size: 15))
             
             Form {
-                Section(header: Text("Malts").font(.headline).foregroundColor(.black)) {
+                Section(header: Text("Malts")
+                    .font(.headline).italic()
+                    .foregroundColor(.primary)
+                    .padding([.top])) {
+                        
                     List {
                         ForEach(0..<beer.ingredients.malt.count) { idx in
                             MaltRow(malt: self.beer.ingredients.malt[idx])
                         }
                     }
                 }
-                .padding([.top])
                 
-                Section(header: Text("Hops").font(.headline).foregroundColor(.black)) {
+                Section(header: Text("Hops")
+                    .font(.headline)
+                    .italic()
+                    .foregroundColor(.primary)) {
                     List() {
                         ForEach(0..<beer.ingredients.hops.count) { idx in
                             HopRow(hop: self.beer.ingredients.hops[idx])
@@ -89,6 +98,11 @@ struct BeerDetail: View {
 
 struct BeerDetail_Previews: PreviewProvider {
     static var previews: some View {
-        BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!)
+        Group {
+            
+            BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!, imageLoaded: true)
+            
+            BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!, imageLoaded: true).environment(\.colorScheme, .dark)
+        }
     }
 }
