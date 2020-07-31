@@ -52,5 +52,6 @@ struct HopRow: View {
 struct HopRow_Previews: PreviewProvider {
     static var previews: some View {
         HopRow(hop: Beer.hop)
+            .previewLayout(.sizeThatFits)
     }
 }

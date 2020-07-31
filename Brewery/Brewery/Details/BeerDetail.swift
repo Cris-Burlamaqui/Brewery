@@ -35,8 +35,7 @@ struct BeerDetail: View {
                             .padding()
                     }
                     else {
-                        Text("Loading...")
-                            .foregroundColor(.primary)
+                        Text("Loading...").foregroundColor(.primary)
                     }
                 }
                 
@@ -64,7 +63,7 @@ struct BeerDetail: View {
             
             Text(beer.description)
                 .padding()
-                .font(.system(size: 15))
+                .font(.system(size: 14))
             
             Form {
                 Section(header: Text("Malts")
@@ -100,9 +99,9 @@ struct BeerDetail_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             
-            BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!, imageLoaded: true)
+            BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!, imageLoaded: false)
             
-            BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!, imageLoaded: true).environment(\.colorScheme, .dark)
+            BeerDetail(beer: Beer.example, beerType: "B", beerImage:  UIImage(named: "beer_example")!, imageLoaded: false).environment(\.colorScheme, .dark)
         }
     }
 }

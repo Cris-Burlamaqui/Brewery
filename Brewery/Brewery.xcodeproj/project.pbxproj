@@ -23,6 +23,7 @@
 		F51995B524D0BD5900460996 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B424D0BD5900460996 /* Method.swift */; };
 		F51995B724D0BE8700460996 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B624D0BE8700460996 /* Ingredients.swift */; };
 		F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B924D0C22A00460996 /* BeerRequest.swift */; };
+		F5F19BDC24D464F9000E2492 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BDB24D464F9000E2492 /* LoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		F51995B424D0BD5900460996 /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		F51995B624D0BE8700460996 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		F51995B924D0C22A00460996 /* BeerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRequest.swift; sourceTree = "<group>"; };
+		F5F19BDB24D464F9000E2492 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +119,11 @@
 			children = (
 				F519958D24D09B2B00460996 /* AppDelegate.swift */,
 				F519958F24D09B2B00460996 /* SceneDelegate.swift */,
-				F519959124D09B2B00460996 /* BeerBatchView.swift */,
-				F51995B824D0C1E200460996 /* Request */,
-				F51995B124D0BCB100460996 /* Model */,
+				F5F19BDD24D46653000E2492 /* Views */,
 				F506731924D4227500E3CEDA /* Details */,
 				F506731824D4224200E3CEDA /* Rows */,
+				F51995B824D0C1E200460996 /* Request */,
+				F51995B124D0BCB100460996 /* Model */,
 				F519959324D09B2D00460996 /* Assets.xcassets */,
 				F519959824D09B2D00460996 /* LaunchScreen.storyboard */,
 				F519959B24D09B2D00460996 /* Info.plist */,
@@ -164,6 +166,15 @@
 				F51995B924D0C22A00460996 /* BeerRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		F5F19BDD24D46653000E2492 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F519959124D09B2B00460996 /* BeerBatchView.swift */,
+				F5F19BDB24D464F9000E2492 /* LoaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			files = (
 				F506731424D2F80400E3CEDA /* MaltRow.swift in Sources */,
 				F506731624D2FA4400E3CEDA /* HopRow.swift in Sources */,
+				F5F19BDC24D464F9000E2492 /* LoaderView.swift in Sources */,
 				F51995B524D0BD5900460996 /* Method.swift in Sources */,
 				F519958E24D09B2B00460996 /* AppDelegate.swift in Sources */,
 				F51995B724D0BE8700460996 /* Ingredients.swift in Sources */,
@@ -432,8 +444,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Brewery/Preview Content\"";
+				DEVELOPMENT_TEAM = Q3ZWD82N5E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Brewery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,8 +465,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Brewery/Preview Content\"";
+				DEVELOPMENT_TEAM = Q3ZWD82N5E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Brewery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

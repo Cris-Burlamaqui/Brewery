@@ -90,5 +90,6 @@ struct BeerRow_Previews: PreviewProvider {
     static var previews: some View {
         
         BeerRow(beer: Beer.example, beerType: "C")
+            .previewLayout(.sizeThatFits)
     }
 }

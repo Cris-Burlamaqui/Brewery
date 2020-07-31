@@ -11,6 +11,7 @@ import Foundation
 class BeerRequest: ObservableObject {
     
     @Published var beerList = [Beer]()
+    @Published var wainting = true
     
     func getBeerData(from beersIds: String) {
         
@@ -40,6 +41,7 @@ class BeerRequest: ObservableObject {
             let beers = try decoder.decode([Beer].self, from: data)
             DispatchQueue.main.async {
                 self.beerList = beers
+                self.wainting = false
             }
         } catch let decodeError as NSError {
             print("Decode error: \(decodeError.localizedDescription)")

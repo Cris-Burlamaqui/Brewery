@@ -34,5 +34,6 @@ struct MaltRow_Previews: PreviewProvider {
     
     static var previews: some View {
         MaltRow(malt: Beer.malt)
+            .previewLayout(.sizeThatFits)
     }
 }

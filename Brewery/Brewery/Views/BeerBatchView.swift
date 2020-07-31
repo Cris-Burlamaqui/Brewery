@@ -14,18 +14,40 @@ struct BeerBatchView: View {
     
     @State var beerBatch = [String]()
     @State private var showingAlert = false
+    @State private var showNoSolution = false
     
     var body: some View {
         NavigationView {
             VStack {
-                List(beerRequest.beerList) { beer in
-                    BeerRow(beer: beer, beerType: self.beerBatch[beer.id - 1])
+                
+                if showNoSolution {
+                    VStack {
+                        Text(showNoSolution ? "No solution found!" : "Request error!")
+                            .padding([.top])
+                        
+                        Spacer()
+                    }
                 }
+                else {
+                    
+                    ZStack {
+                        List(self.beerRequest.beerList) { beer in
+                            BeerRow(beer: beer, beerType: self.beerBatch[beer.id - 1])
+                        }
+                        
+                        if beerRequest.wainting {
+                            LoaderView()
+                        }
+                    }
+                }
+                
             }
             .navigationBarTitle("Beer Batch")
             .onAppear(perform: consumeChallengeFile)
             .alert(isPresented: $showingAlert) { () -> Alert in
-                Alert(title: Text("No solution"), message: Text("There's no solution which satisfies all customers."), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Error"), message: Text("There's no solution which satisfies all customers."), dismissButton: .cancel({
+                    self.showNoSolution = true
+                }))
             }
         }
     }
@@ -52,33 +74,17 @@ struct BeerBatchView: View {
         var beers = Array(repeating: "", count: types)
         
         for clientBeers in clientList {
-            if clientBeers.count == 1 {
-                let index = clientBeers[0].prefix{ "0"..."9" ~= $0 }
+            for (idx, beer) in clientBeers.enumerated() {
+                let index = beer.prefix{ "0"..."9" ~= $0 }
                 let i = Int(index)! - 1
-                let type = clientBeers[0].deletingPrefix(String(index))
-                
-                if beers[i].elementsEqual("") || beers[i].elementsEqual(type) {
+                let type = beer.deletingPrefix(String(index))
+                if beers[i].elementsEqual(type) || beers[i].elementsEqual("") {
+                    if type.elementsEqual("B") && idx != (clientBeers.endIndex - 1) {
+                        continue
+                    }
                     beers[i] = type
                     clientList.removeFirst()
-                    continue
-                }
-                else {
                     break
-                }
-            }
-            else {
-                for (idx, beer) in clientBeers.enumerated() {
-                    let index = beer.prefix{ "0"..."9" ~= $0 }
-                    let i = Int(index)! - 1
-                    let type = beer.deletingPrefix(String(index))
-                    if beers[i].elementsEqual(type) || beers[i].elementsEqual("") {
-                        if type.elementsEqual("B") && idx != (clientBeers.endIndex - 1) {
-                            continue
-                        }
-                        beers[i] = type
-                        clientList.removeFirst()
-                        break
-                    }
                 }
             }
         }
@@ -92,6 +98,7 @@ struct BeerBatchView: View {
         }
         
         if clientList.count > 0 {
+            beerRequest.wainting = false
             showingAlert = true
         }
         else {

@@ -52,4 +52,14 @@ class BreweryTests: XCTestCase {
         XCTAssertEqual(correctBeerBatch.isEmpty, contentView.beerBatch.isEmpty)
     }
 
+    func secondNoSolution() throws {
+
+        let correctBeerBatch = [String]()
+        let clientsList = ["2", "1 C 2 B", "1 B", "2 C"]
+
+        contentView.generateBeerList(from: clientsList)
+
+        XCTAssertEqual(correctBeerBatch, contentView.beerBatch)
+    }
+
 }
