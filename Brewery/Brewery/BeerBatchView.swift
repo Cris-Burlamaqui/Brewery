@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct BeerBatchView: View {
     
     @ObservedObject var beerRequest = BeerRequest()
     
@@ -135,9 +135,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView().environment(\.colorScheme, .light)
+            BeerBatchView().environment(\.colorScheme, .light)
             
-            ContentView().environment(\.colorScheme, .dark)
+            BeerBatchView().environment(\.colorScheme, .dark)
         }
     }
 }
