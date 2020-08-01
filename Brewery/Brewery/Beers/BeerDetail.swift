@@ -82,9 +82,9 @@ struct BeerDetail: View {
                     
                 }
                 
-                Section(header: Text("Method").font(.headline)) {
+                Section(header: Text("Methods").font(.headline)) {
                     NavigationLink(destination: MethodDetail(method: beer.method)) {
-                        Text("Methods")
+                        Text("Method list")
                     }
                     
                     

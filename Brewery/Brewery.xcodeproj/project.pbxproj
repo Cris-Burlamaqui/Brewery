@@ -160,8 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				F519959124D09B2B00460996 /* BeerBatchView.swift */,
-				F506731124D2F4FE00E3CEDA /* BeerDetail.swift */,
 				F506730F24D2E13E00E3CEDA /* BeerRow.swift */,
+				F506731124D2F4FE00E3CEDA /* BeerDetail.swift */,
 				F524A48324D5D9F1002BF133 /* Beer Models */,
 				F51995B824D0C1E200460996 /* Beer Request */,
 			);
