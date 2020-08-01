@@ -24,6 +24,7 @@
 		F51995B724D0BE8700460996 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B624D0BE8700460996 /* Ingredients.swift */; };
 		F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B924D0C22A00460996 /* BeerRequest.swift */; };
 		F5F19BDC24D464F9000E2492 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BDB24D464F9000E2492 /* LoaderView.swift */; };
+		F5F19BFD24D588B3000E2492 /* BeerTypeBatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		F51995B624D0BE8700460996 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		F51995B924D0C22A00460996 /* BeerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRequest.swift; sourceTree = "<group>"; };
 		F5F19BDB24D464F9000E2492 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTypeBatchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				F51995B224D0BCC700460996 /* Beer.swift */,
 				F51995B424D0BD5900460996 /* Method.swift */,
 				F51995B624D0BE8700460996 /* Ingredients.swift */,
+				F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				F51995B724D0BE8700460996 /* Ingredients.swift in Sources */,
 				F519959024D09B2B00460996 /* SceneDelegate.swift in Sources */,
 				F519959224D09B2B00460996 /* BeerBatchView.swift in Sources */,
+				F5F19BFD24D588B3000E2492 /* BeerTypeBatchModel.swift in Sources */,
 				F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */,
 				F506731024D2E13E00E3CEDA /* BeerRow.swift in Sources */,
 				F51995B324D0BCC700460996 /* Beer.swift in Sources */,
