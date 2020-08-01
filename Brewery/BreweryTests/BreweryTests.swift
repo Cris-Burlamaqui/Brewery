@@ -22,44 +22,46 @@ class BreweryTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func firstSolution() throws {
+    func testSolution() throws {
+        
+        let clientsList = ["5", "1 B 3 C 5 C", "2 C 3 B 4 C", "5 B"]
+        let beerTypeBatchModel = BeerTypeBatchModel(with: clientsList)
         
         let correctBeerBatch = ["C", "C", "C", "C", "B"]
-        let clientsList = ["5", "1 B 3 C 5 C", "2 C 3 B 4 C", "5 B"]
         
-        contentView.generateBeerList(from: clientsList)
         
-        XCTAssertEqual(correctBeerBatch, contentView.beerBatch)
+        XCTAssertEqual(correctBeerBatch, beerTypeBatchModel.beerTypeBatch)
     }
     
-    func secondSolution() throws {
+    func testSecondSolution() throws {
 
-        let correctBeerBatch = ["B", "B"]
+        
         let clientsList = ["2", "1 C 2 B", "1 B"]
+        let beerTypeBatchModel = BeerTypeBatchModel(with: clientsList)
+        
+        let correctBeerBatch = ["B", "B"]
 
-        contentView.generateBeerList(from: clientsList)
-
-        XCTAssertEqual(correctBeerBatch, contentView.beerBatch)
+        XCTAssertEqual(correctBeerBatch, beerTypeBatchModel.beerTypeBatch)
     }
 
-    func noSolution() throws {
-
-        let correctBeerBatch = [String]()
+    func testNoSolution() throws {
+        
         let clientsList = ["1", "1 C", "1 B"]
+        let beerTypeBatchModel = BeerTypeBatchModel(with: clientsList)
+        
+        let correctBeerBatch = [String]()
 
-        contentView.generateBeerList(from: clientsList)
-
-        XCTAssertEqual(correctBeerBatch.isEmpty, contentView.beerBatch.isEmpty)
+        XCTAssertEqual(correctBeerBatch.isEmpty, beerTypeBatchModel.beerTypeBatch.isEmpty)
     }
 
-    func secondNoSolution() throws {
-
-        let correctBeerBatch = [String]()
+    func testSecondNoSolution() throws {
+        
         let clientsList = ["2", "1 C 2 B", "1 B", "2 C"]
+        let beerTypeBatchModel = BeerTypeBatchModel(with: clientsList)
+        
+        let correctBeerBatch = [String]()
 
-        contentView.generateBeerList(from: clientsList)
-
-        XCTAssertEqual(correctBeerBatch, contentView.beerBatch)
+        XCTAssertEqual(correctBeerBatch.isEmpty, beerTypeBatchModel.beerTypeBatch.isEmpty)
     }
 
 }
