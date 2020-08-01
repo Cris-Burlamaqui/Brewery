@@ -53,79 +53,25 @@ struct BeerBatchView: View {
     }
     
     func consumeChallengeFile() {
+        
         if let codeChallengeURL = Bundle.main.url(forResource: "code_challenge_richer", withExtension: "txt") {
             if let customersBeers = try? String(contentsOf: codeChallengeURL) {
                 let allBeers = customersBeers.components(separatedBy: "\n")
-                generateBeerList(from: allBeers)
-                return
-            }
-        }
-        fatalError("Could not load start.txt from bundle.")
-    }
-    
-    func generateBeerList(from allBeers: [String]) {
-        
-        guard allBeers.count > 1 else {
-            return
-        }
-        
-        var clientList = generateClientList(from: allBeers)
-        let types = Int(allBeers[0]) ?? 1
-        var beers = Array(repeating: "", count: types)
-        
-        for clientBeers in clientList {
-            for (idx, beer) in clientBeers.enumerated() {
-                let index = beer.prefix{ "0"..."9" ~= $0 }
-                let i = Int(index)! - 1
-                let type = beer.deletingPrefix(String(index))
-                if beers[i].elementsEqual(type) || beers[i].elementsEqual("") {
-                    if type.elementsEqual("B") && idx != (clientBeers.endIndex - 1) {
-                        continue
-                    }
-                    beers[i] = type
-                    clientList.removeFirst()
-                    break
+                
+                let beerTypeBatch = BeerTypeBatchModel(with: allBeers).beerTypeBatch
+                
+                if beerTypeBatch.isEmpty {
+                    beerRequest.wainting = false
+                    showingAlert = true
+                }
+                else {
+                    requestBeerData(from: beerTypeBatch)
                 }
             }
-        }
-        
-        if beers.contains("") {
-            for (i, beer) in beers.enumerated() {
-                if beer.elementsEqual("") {
-                    beers[i] = "C"
-                }
-            }
-        }
-        
-        if clientList.count > 0 {
-            beerRequest.wainting = false
-            showingAlert = true
         }
         else {
-            requestBeerData(from: beers)
+            fatalError("Could not load start.txt from bundle.")
         }
-    }
-    
-    func generateClientList(from allCustomersBeers: [String]) -> [[String]] {
-        
-        var clients = [[String]]()
-        
-        for index in 1..<allCustomersBeers.count where allCustomersBeers[index].count > 1 {
-            
-            let beerTypes = allCustomersBeers[index].replacingOccurrences(of: " ", with: "")
-            var types = [String]()
-            var prefix = ""
-            
-            for item in beerTypes {
-                prefix += String(item)
-                if item.isLetter {
-                    types.append(prefix)
-                    prefix = ""
-                }
-            }
-            clients.append(types)
-        }
-        return clients.sorted { $0.count < $1.count }
     }
     
     func requestBeerData(from beers: [String]) {
@@ -137,6 +83,7 @@ struct BeerBatchView: View {
         beerRequest.getBeerData(from: beersIds)
         beerBatch = beers
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -146,12 +93,5 @@ struct ContentView_Previews: PreviewProvider {
             
             BeerBatchView().environment(\.colorScheme, .dark)
         }
-    }
-}
-
-extension String {
-    func deletingPrefix(_ prefix: String) -> String {
-        guard self.hasPrefix(prefix) else { return self }
-        return String(self.dropFirst(prefix.count))
     }
 }
