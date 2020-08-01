@@ -34,6 +34,7 @@ struct BeerBatchView: View {
                         List(self.beerRequest.beerList) { beer in
                             BeerRow(beer: beer, beerType: self.beerBatch[beer.id - 1])
                         }
+                        .padding([.top])
                         
                         if beerRequest.wainting {
                             LoaderView()

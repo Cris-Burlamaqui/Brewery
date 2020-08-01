@@ -23,6 +23,9 @@
 		F51995B524D0BD5900460996 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B424D0BD5900460996 /* Method.swift */; };
 		F51995B724D0BE8700460996 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B624D0BE8700460996 /* Ingredients.swift */; };
 		F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51995B924D0C22A00460996 /* BeerRequest.swift */; };
+		F524A47824D5B9F8002BF133 /* MethodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524A47724D5B9F8002BF133 /* MethodDetail.swift */; };
+		F524A47C24D5D024002BF133 /* MaltsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524A47B24D5D024002BF133 /* MaltsDetail.swift */; };
+		F524A47E24D5D4C8002BF133 /* HopsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524A47D24D5D4C8002BF133 /* HopsDetail.swift */; };
 		F5F19BDC24D464F9000E2492 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BDB24D464F9000E2492 /* LoaderView.swift */; };
 		F5F19BFD24D588B3000E2492 /* BeerTypeBatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,9 @@
 		F51995B424D0BD5900460996 /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		F51995B624D0BE8700460996 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		F51995B924D0C22A00460996 /* BeerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRequest.swift; sourceTree = "<group>"; };
+		F524A47724D5B9F8002BF133 /* MethodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodDetail.swift; sourceTree = "<group>"; };
+		F524A47B24D5D024002BF133 /* MaltsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaltsDetail.swift; sourceTree = "<group>"; };
+		F524A47D24D5D4C8002BF133 /* HopsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopsDetail.swift; sourceTree = "<group>"; };
 		F5F19BDB24D464F9000E2492 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTypeBatchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,22 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F506731824D4224200E3CEDA /* Rows */ = {
+		F506731924D4227500E3CEDA /* Methods */ = {
 			isa = PBXGroup;
 			children = (
-				F506730F24D2E13E00E3CEDA /* BeerRow.swift */,
-				F506731324D2F80400E3CEDA /* MaltRow.swift */,
-				F506731524D2FA4400E3CEDA /* HopRow.swift */,
+				F524A47724D5B9F8002BF133 /* MethodDetail.swift */,
+				F524A48524D5DA33002BF133 /* Method Model */,
 			);
-			path = Rows;
-			sourceTree = "<group>";
-		};
-		F506731924D4227500E3CEDA /* Details */ = {
-			isa = PBXGroup;
-			children = (
-				F506731124D2F4FE00E3CEDA /* BeerDetail.swift */,
-			);
-			path = Details;
+			path = Methods;
 			sourceTree = "<group>";
 		};
 		F519958124D09B2B00460996 = {
@@ -121,11 +118,10 @@
 			children = (
 				F519958D24D09B2B00460996 /* AppDelegate.swift */,
 				F519958F24D09B2B00460996 /* SceneDelegate.swift */,
+				F524A47F24D5D930002BF133 /* Beers */,
+				F524A48224D5D99D002BF133 /* Ingredients */,
+				F506731924D4227500E3CEDA /* Methods */,
 				F5F19BDD24D46653000E2492 /* Views */,
-				F506731924D4227500E3CEDA /* Details */,
-				F506731824D4224200E3CEDA /* Rows */,
-				F51995B824D0C1E200460996 /* Request */,
-				F51995B124D0BCB100460996 /* Model */,
 				F519959324D09B2D00460996 /* Assets.xcassets */,
 				F519959824D09B2D00460996 /* LaunchScreen.storyboard */,
 				F519959B24D09B2D00460996 /* Info.plist */,
@@ -152,29 +148,82 @@
 			path = BreweryTests;
 			sourceTree = "<group>";
 		};
-		F51995B124D0BCB100460996 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F51995B224D0BCC700460996 /* Beer.swift */,
-				F51995B424D0BD5900460996 /* Method.swift */,
-				F51995B624D0BE8700460996 /* Ingredients.swift */,
-				F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F51995B824D0C1E200460996 /* Request */ = {
+		F51995B824D0C1E200460996 /* Beer Request */ = {
 			isa = PBXGroup;
 			children = (
 				F51995B924D0C22A00460996 /* BeerRequest.swift */,
 			);
-			path = Request;
+			path = "Beer Request";
+			sourceTree = "<group>";
+		};
+		F524A47F24D5D930002BF133 /* Beers */ = {
+			isa = PBXGroup;
+			children = (
+				F519959124D09B2B00460996 /* BeerBatchView.swift */,
+				F506731124D2F4FE00E3CEDA /* BeerDetail.swift */,
+				F506730F24D2E13E00E3CEDA /* BeerRow.swift */,
+				F524A48324D5D9F1002BF133 /* Beer Models */,
+				F51995B824D0C1E200460996 /* Beer Request */,
+			);
+			path = Beers;
+			sourceTree = "<group>";
+		};
+		F524A48024D5D954002BF133 /* Malts */ = {
+			isa = PBXGroup;
+			children = (
+				F524A47B24D5D024002BF133 /* MaltsDetail.swift */,
+				F506731324D2F80400E3CEDA /* MaltRow.swift */,
+			);
+			path = Malts;
+			sourceTree = "<group>";
+		};
+		F524A48124D5D979002BF133 /* Hops */ = {
+			isa = PBXGroup;
+			children = (
+				F524A47D24D5D4C8002BF133 /* HopsDetail.swift */,
+				F506731524D2FA4400E3CEDA /* HopRow.swift */,
+			);
+			path = Hops;
+			sourceTree = "<group>";
+		};
+		F524A48224D5D99D002BF133 /* Ingredients */ = {
+			isa = PBXGroup;
+			children = (
+				F524A48024D5D954002BF133 /* Malts */,
+				F524A48124D5D979002BF133 /* Hops */,
+				F524A48424D5DA07002BF133 /* Ingredients Model */,
+			);
+			path = Ingredients;
+			sourceTree = "<group>";
+		};
+		F524A48324D5D9F1002BF133 /* Beer Models */ = {
+			isa = PBXGroup;
+			children = (
+				F51995B224D0BCC700460996 /* Beer.swift */,
+				F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */,
+			);
+			path = "Beer Models";
+			sourceTree = "<group>";
+		};
+		F524A48424D5DA07002BF133 /* Ingredients Model */ = {
+			isa = PBXGroup;
+			children = (
+				F51995B624D0BE8700460996 /* Ingredients.swift */,
+			);
+			path = "Ingredients Model";
+			sourceTree = "<group>";
+		};
+		F524A48524D5DA33002BF133 /* Method Model */ = {
+			isa = PBXGroup;
+			children = (
+				F51995B424D0BD5900460996 /* Method.swift */,
+			);
+			path = "Method Model";
 			sourceTree = "<group>";
 		};
 		F5F19BDD24D46653000E2492 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F519959124D09B2B00460996 /* BeerBatchView.swift */,
 				F5F19BDB24D464F9000E2492 /* LoaderView.swift */,
 			);
 			path = Views;
@@ -285,15 +334,18 @@
 				F506731424D2F80400E3CEDA /* MaltRow.swift in Sources */,
 				F506731624D2FA4400E3CEDA /* HopRow.swift in Sources */,
 				F5F19BDC24D464F9000E2492 /* LoaderView.swift in Sources */,
+				F524A47824D5B9F8002BF133 /* MethodDetail.swift in Sources */,
 				F51995B524D0BD5900460996 /* Method.swift in Sources */,
 				F519958E24D09B2B00460996 /* AppDelegate.swift in Sources */,
 				F51995B724D0BE8700460996 /* Ingredients.swift in Sources */,
 				F519959024D09B2B00460996 /* SceneDelegate.swift in Sources */,
+				F524A47E24D5D4C8002BF133 /* HopsDetail.swift in Sources */,
 				F519959224D09B2B00460996 /* BeerBatchView.swift in Sources */,
 				F5F19BFD24D588B3000E2492 /* BeerTypeBatchModel.swift in Sources */,
 				F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */,
 				F506731024D2E13E00E3CEDA /* BeerRow.swift in Sources */,
 				F51995B324D0BCC700460996 /* Beer.swift in Sources */,
+				F524A47C24D5D024002BF133 /* MaltsDetail.swift in Sources */,
 				F506731224D2F4FE00E3CEDA /* BeerDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

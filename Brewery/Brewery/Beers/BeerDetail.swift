@@ -15,13 +15,16 @@ struct BeerDetail: View {
     static let typeDesc: [String: String] = ["C":"Classic", "B":"Barrel Aged"]
     static let typeColor: [String: Color] = ["C": .blue, "B": .purple]
     
+    @State var maltsIsPresented = false
+    @State var hopsIsPresented = false
+    @State var methodIsPresented = false
+    
     var beer: Beer
     var beerType: String
     var beerImage: UIImage
     var imageLoaded = false
     
     var body: some View {
-        
         VStack {
             
             ZStack(alignment: .bottomTrailing) {
@@ -64,33 +67,30 @@ struct BeerDetail: View {
             
             Text(beer.description)
                 .padding()
-                .font(.system(size: 14))
             
             Form {
-                Section(header: Text("Malts")
-                    .font(.headline).italic()
-                    .foregroundColor(.primary)
-                    .padding([.top])) {
-                        
-                    List {
-                        ForEach(0..<beer.ingredients.malt.count) { idx in
-                            MaltRow(malt: self.beer.ingredients.malt[idx])
-                        }
+                Section(header: Text("Ingredients").font(.headline).padding([.top])) {
+                    
+                    NavigationLink(destination: MaltsDetail(malts: beer.ingredients.malt)) {
+                        Text("Malts")
                     }
+                    
+                    
+                    NavigationLink(destination: HopsDetail(hops: beer.ingredients.hops)) {
+                        Text("Hops")
+                    }
+                    
                 }
                 
-                Section(header: Text("Hops")
-                    .font(.headline)
-                    .italic()
-                    .foregroundColor(.primary)) {
-                    List() {
-                        ForEach(0..<beer.ingredients.hops.count) { idx in
-                            HopRow(hop: self.beer.ingredients.hops[idx])
-                        }
+                Section(header: Text("Method").font(.headline)) {
+                    NavigationLink(destination: MethodDetail(method: beer.method)) {
+                        Text("Methods")
                     }
+                    
+                    
                 }
+                .navigationBarTitle(Text(beer.name), displayMode: .inline)
             }
-            .navigationBarTitle(Text(beer.name), displayMode: .inline)
         }
         
     }
