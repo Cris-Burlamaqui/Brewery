@@ -35,7 +35,8 @@ struct BeerDetail: View {
                             .padding()
                     }
                     else {
-                        Text("Loading...").foregroundColor(.primary)
+                        Text("Loading...")
+                            .foregroundColor(colorScheme == .dark ? .black : .white)
                     }
                 }
                 

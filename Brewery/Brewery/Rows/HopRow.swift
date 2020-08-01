@@ -46,7 +46,9 @@ struct HopRow: View {
             }
             
         }
+        .padding(8)
     }
+
 }
 
 struct HopRow_Previews: PreviewProvider {

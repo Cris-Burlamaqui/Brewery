@@ -27,6 +27,7 @@ struct MaltRow: View {
                     .font(.system(size: 16))
             }
         }
+        .padding(8)
     }
 }
 
