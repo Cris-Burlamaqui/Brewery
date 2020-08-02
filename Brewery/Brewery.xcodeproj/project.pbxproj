@@ -26,6 +26,7 @@
 		F524A47824D5B9F8002BF133 /* MethodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524A47724D5B9F8002BF133 /* MethodDetail.swift */; };
 		F524A47C24D5D024002BF133 /* MaltsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524A47B24D5D024002BF133 /* MaltsDetail.swift */; };
 		F524A47E24D5D4C8002BF133 /* HopsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F524A47D24D5D4C8002BF133 /* HopsDetail.swift */; };
+		F56DDA9E24D6FC7600EB5107 /* NoSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56DDA9D24D6FC7600EB5107 /* NoSolutionView.swift */; };
 		F5F19BDC24D464F9000E2492 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BDB24D464F9000E2492 /* LoaderView.swift */; };
 		F5F19BFD24D588B3000E2492 /* BeerTypeBatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		F524A47724D5B9F8002BF133 /* MethodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodDetail.swift; sourceTree = "<group>"; };
 		F524A47B24D5D024002BF133 /* MaltsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaltsDetail.swift; sourceTree = "<group>"; };
 		F524A47D24D5D4C8002BF133 /* HopsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopsDetail.swift; sourceTree = "<group>"; };
+		F56DDA9D24D6FC7600EB5107 /* NoSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSolutionView.swift; sourceTree = "<group>"; };
 		F5F19BDB24D464F9000E2492 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		F5F19BFC24D588B3000E2492 /* BeerTypeBatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTypeBatchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F19BDB24D464F9000E2492 /* LoaderView.swift */,
+				F56DDA9D24D6FC7600EB5107 /* NoSolutionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F5F19BFD24D588B3000E2492 /* BeerTypeBatchModel.swift in Sources */,
 				F51995BA24D0C22A00460996 /* BeerRequest.swift in Sources */,
 				F506731024D2E13E00E3CEDA /* BeerRow.swift in Sources */,
+				F56DDA9E24D6FC7600EB5107 /* NoSolutionView.swift in Sources */,
 				F51995B324D0BCC700460996 /* Beer.swift in Sources */,
 				F524A47C24D5D024002BF133 /* MaltsDetail.swift in Sources */,
 				F506731224D2F4FE00E3CEDA /* BeerDetail.swift in Sources */,
