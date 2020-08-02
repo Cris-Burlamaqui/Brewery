@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HopRow: View {
     
-    var hop: Hop
+    @ObservedObject var hop: Hop
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -44,6 +44,17 @@ struct HopRow: View {
                     .foregroundColor(.gray)
                     .font(.system(size: 16))
             }
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    self.hop.isUsed.toggle()
+                }) {
+                    Text(self.hop.isUsed ? "Used" : "Use")
+                }
+                Spacer()
+            }
+            .padding([.top])
             
         }
         .padding(8)

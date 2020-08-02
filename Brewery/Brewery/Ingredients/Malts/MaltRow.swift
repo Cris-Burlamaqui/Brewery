@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MaltRow: View {
     
-    var malt: Malt
+    @ObservedObject var malt: Malt
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -21,10 +21,18 @@ struct MaltRow: View {
             HStack {
                 Text("amount:")
                     .font(.system(size: 16))
-                Spacer()
                 Text("\(malt.amount.value, specifier: "%g") \(malt.amount.unit)")
                     .foregroundColor(.gray)
                     .font(.system(size: 16))
+                
+                Spacer()
+                
+                Button(action: {
+                    self.malt.isUsed.toggle()
+                }) {
+                    Text(self.malt.isUsed ? "Used" : "Use")
+                }
+                .padding([.leading])
             }
         }
         .padding(8)
