@@ -65,7 +65,7 @@ struct BeerBatchView: View {
             }
             .navigationBarTitle("Beer Batch")
             .alert(isPresented: $showingAlert) { () -> Alert in
-                Alert(title: Text("There's no solution which satisfies all customers."), dismissButton: .cancel({
+                Alert(title: Text("Sorry"), message: Text("There's no solution which satisfies all customers."), dismissButton: .cancel({
                     self.showNoSolution = true
                     self.beerRequest.wainting = true
                 }))
