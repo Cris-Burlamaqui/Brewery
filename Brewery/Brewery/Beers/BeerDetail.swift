@@ -48,7 +48,7 @@ struct BeerDetail: View {
                     .background(Self.typeColor[beerType, default: .black])
                     .clipShape(RoundedRectangle(cornerRadius: 3))
                     .font(.system(size: 13))
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
                     .offset(x: -5, y: -5)
             }
             

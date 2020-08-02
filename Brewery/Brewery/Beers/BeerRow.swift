@@ -15,7 +15,7 @@ struct BeerRow: View {
     var beer: Beer
     var beerType: String
     
-    @State private var beerImage = UIImage(named: "beer_example")!
+    @State private var beerImage = UIImage(named: "load")!
     @State var imageLoaded = false
     
     var body: some View {

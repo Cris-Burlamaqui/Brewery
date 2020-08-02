@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BeerBatchView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var beerRequest = BeerRequest()
     
     @State var beerBatch = [String]()
@@ -21,37 +22,30 @@ struct BeerBatchView: View {
             VStack {
                 
                 if showNoSolution {
-                    
                     if !beerRequest.wainting {
+                        
                         VStack {
-                            HStack {
-                                Image("beer_example")
-                                .resizable()
-                                .frame(width: 70, height: 70)
-                                .clipShape(Circle())
-                                
-                                Button(action: {
-                                    self.consumeChallengeFile()
-                                }) {
-                                    Text("Load beer batch")
-                                        .foregroundColor(Color.primary)
+                            Button(action: {
+                                self.consumeChallengeFile()
+                            }) {
+                                VStack {
+                                    Image("load")
+                                        .resizable()
+                                        .frame(width: 70, height: 70)
+                                        .foregroundColor(.primary)
+                                    
+                                    Text("Load batch")
+                                        .foregroundColor(.primary)
                                 }
-                                .padding()
-                                .clipShape(RoundedRectangle(cornerRadius: 3))
-                                .overlay(RoundedRectangle(cornerRadius: 3).stroke(Color.primary, lineWidth: 1))
                             }
-                            .padding([.top], 20)
+                            .padding([.top], 50)
                             
                             Spacer()
                         }
                     }
                     else {
-                        VStack {
-                            Text(showNoSolution ? "No solution found!" : "Request error!")
-                                .padding([.top])
-                            
-                            Spacer()
-                        }
+                        NoSolutionView(message: showNoSolution ? "No solution found!" : "Request error!")
+                        Spacer()
                     }
                 }
                 else {
@@ -71,8 +65,9 @@ struct BeerBatchView: View {
             }
             .navigationBarTitle("Beer Batch")
             .alert(isPresented: $showingAlert) { () -> Alert in
-                Alert(title: Text("Error"), message: Text("There's no solution which satisfies all customers."), dismissButton: .cancel({
+                Alert(title: Text("There's no solution which satisfies all customers."), dismissButton: .cancel({
                     self.showNoSolution = true
+                    self.beerRequest.wainting = true
                 }))
             }
         }
