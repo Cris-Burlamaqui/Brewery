@@ -8,25 +8,52 @@
 
 import Foundation
 
-struct Ingredients: Codable {
+class Ingredients: ObservableObject {
     
-    let malt: [Malt]
-    let hops: [Hop]
+    var malt: [Malt]
+    var hops: [Hop]
+    
+    init(malts: [Malt], hops: [Hop]) {
+        self.malt = malts
+        self.hops = hops
+    }
 }
 
-struct Malt: Codable {
-    let name: String
-    let amount: Amount
+class Malt: ObservableObject {
+    
+    @Published var isUsed = false
+    
+    var name: String
+    var amount: Amount
+    
+    init(name: String, amount: Amount) {
+        self.name = name
+        self.amount = amount
+    }
 }
 
-struct Hop: Codable {
-    let name: String
-    let amount: Amount
-    let add: String
-    let attribute: String
+class Hop: ObservableObject {
+    
+    @Published var isUsed = false
+    
+    var name: String
+    var amount: Amount
+    var add: String
+    var attribute: String
+    
+    init(name: String, amount: Amount, add: String, attribute: String) {
+        self.name = name
+        self.amount = amount
+        self.add = add
+        self.attribute = attribute
+    }
 }
 
-struct Amount: Codable {
-    let value: Double
-    let unit: String
+class Amount: ObservableObject {
+    var value: Double
+    var unit: String
+    init(value: Double, unit: String) {
+        self.value = value
+        self.unit = unit
+    }
 }

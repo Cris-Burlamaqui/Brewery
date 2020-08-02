@@ -8,20 +8,44 @@
 
 import Foundation
 
-struct Method: Codable {
+class Method: ObservableObject {
     
-    let mash_temp: [Temperature]
-    let fermentation: Temperature
-    let twist: String?
-}
-
-struct Temperature: Codable {
+    @Published var twistApplied = false
+    @Published var fermentationIsApplied = false
+    @Published var mashIsApplied = false
     
-    let temp: TempItem
-    let duration: Int?
+    @Published var mash_temp: [Temperature]
+    var fermentation: TempItem
+    var twist: String?
     
-    struct TempItem: Codable {
-        let value: Int
-        let unit: String
+    init(mash: [Temperature], fermentation: TempItem, twist: String?) {
+        self.mash_temp = mash
+        self.fermentation = fermentation
+        self.twist = twist
+    }
+    
+    class Temperature: ObservableObject {
+        
+        var temp: TempItem
+        var duration: Int?
+        
+        init(temp: TempItem, duration: Int?) {
+            self.temp = temp
+            self.duration = duration
+        }
+    }
+    
+    class TempItem: ObservableObject {
+        
+        var value: Int
+        var unit: String
+        init(value: Int, unit: String) {
+            self.value = value
+            self.unit = unit
+        }
     }
 }
+
+
+
+
