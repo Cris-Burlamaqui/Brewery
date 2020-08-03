@@ -15,7 +15,7 @@
     - it's faster to implement designs, ideas and concepts;
     - and its live preview makes any kind of change easier to test.
 - The architecture used was MVVM dividing model, view and view model responsabilities.
-- The models objects were developed using ObservableObject protocol so when their values change they will be reflected in all views. Consequently the user interface will be updated whith the correct values.
+- The models objects were developed using ObservableObject protocol so when their values change they will be reflected in all views. Consequently the user interface will be updated with the correct values.
 - As a result of the previous item the Codable protocol couldn’t be used because of its limitation of being implemented only in scructure objects. 
 - This meant a further work to parse the data since it was necessary to use JSONSerialization intead of JSONDecoder.
 
