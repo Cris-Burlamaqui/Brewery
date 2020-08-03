@@ -10,12 +10,9 @@ import XCTest
 @testable import Brewery
 
 class BreweryTests: XCTestCase {
-    
-    var contentView: BeerBatchView!
 
     override func setUpWithError() throws {
-        
-        contentView = BeerBatchView()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
