@@ -21,4 +21,5 @@
 
 **Unit testing**
 
-- The unit testing was based on view model class BeerTypeBatchModel. There're two tests for possible solutions to make customers happy and more two for no solution.
+- The unit testing was based on view model class BeerTypeBatchModel which applies the business rule. 
+- There're two tests for possible solutions to make customers happy and there're more two for NO solution.
