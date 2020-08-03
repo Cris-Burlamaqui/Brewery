@@ -5,7 +5,7 @@
 
 - To run the application it's necessary an iPhone or a XCode simulator running with iOS version 13.6 or higher.
 - To use real device you must assign a team development on the Signing and Capabilities tab, than execute the step before choosing your device.
-- To load a batch of beer types click on <Button>
+- To load a batch of beer types click on ![](load.png)
 
 
 **Architectural decisions**
