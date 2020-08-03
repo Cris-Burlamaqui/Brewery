@@ -10,8 +10,8 @@
 **To run on live preview:**
 
 - It's necessary a XCode 11 or higher.
-- Open the project, click on BeerBatchView.swift file and then open the Canvas on Ajust Editor Options.
-- Next to screen's preview click on to run and interact with the app.
+- Open the project, click on BeerBatchView.swift file and then open the Canvas on ![](image/adjust_editor_options.png) (Ajust Editor Options).
+- Next to screen's preview click on ![](image/live_preview_run.png) to run and interact with the app.
 
 **What to expect:**
 
