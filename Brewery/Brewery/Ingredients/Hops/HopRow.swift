@@ -51,8 +51,8 @@ struct HopRow: View {
                     self.hop.isUsed.toggle()
                 }) {
                     Text(self.hop.isUsed ? "Used" : "Use")
+                        .font(.headline)
                 }
-                Spacer()
             }
             .padding([.top])
             

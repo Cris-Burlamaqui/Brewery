@@ -34,12 +34,16 @@ struct MethodDetail: View {
                         }
                     }
                     
-                    Button(action: {
-                        self.method.mashIsApplied.toggle()
-                    }) {
-                        Text(self.method.mashIsApplied ? "Applied" : "Apply")
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.method.mashIsApplied.toggle()
+                        }) {
+                            Text(self.method.mashIsApplied ? "Applied" : "Apply")
+                                .font(.headline)
+                        }
+                        .padding([.bottom])
                     }
-                    .padding([.bottom])
                 }
             }
             
@@ -53,6 +57,7 @@ struct MethodDetail: View {
                             self.method.fermentationIsApplied.toggle()
                         }) {
                             Text(self.method.fermentationIsApplied ? "Applied" : "Apply")
+                                .font(.headline)
                         }
                         .padding([.leading])
                     }
@@ -70,6 +75,7 @@ struct MethodDetail: View {
                             self.method.twistApplied.toggle()
                         }) {
                             Text(self.method.twistApplied ? "Applied" : "Apply")
+                                .font(.headline)
                         }
                         .padding([.leading])
                     }

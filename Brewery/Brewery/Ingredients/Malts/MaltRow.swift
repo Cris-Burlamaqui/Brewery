@@ -31,6 +31,7 @@ struct MaltRow: View {
                     self.malt.isUsed.toggle()
                 }) {
                     Text(self.malt.isUsed ? "Used" : "Use")
+                        .font(.headline)
                 }
                 .padding([.leading])
             }
