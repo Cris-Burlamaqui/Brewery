@@ -10,7 +10,7 @@
 
 **Architectural decisions**
 
-- For this challenge I decided to use SwiftUI because:
+- For this challenge I decided to use SwiftUI for the reason that:
     - there wasn't any dependency of older iOS versions;
     - it's faster to implement designs, ideas and concepts;
     - and its live preview makes any kind of change easier to test.
