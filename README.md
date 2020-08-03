@@ -1,5 +1,5 @@
 # Brewery
- Engineering - Code Challenge
+## iOS Engineer - Code Challenge
  
  **To run the application:**
 
