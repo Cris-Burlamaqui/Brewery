@@ -10,23 +10,22 @@ import SwiftUI
 
 struct BeerRow: View {
     
-    static let colors: [String: Color] = ["C": .blue, "B": .purple]
+    @ObservedObject var beerRequest = BeerRequest()
     
     var beer: Beer
     var beerType: String
     
-    @State private var beerImage = UIImage(named: "load")!
-    @State var imageLoaded = false
+    static let colors: [String: Color] = ["C": .blue, "B": .purple]
     
     var body: some View {
-        NavigationLink(destination: BeerDetail(beer: beer, beerType: beerType, beerImage: beerImage, imageLoaded: imageLoaded)) {
+        NavigationLink(destination: BeerDetail(beer: beer, beerType: beerType, beerImage: beerRequest.beerImage, imageLoaded: beerRequest.imageLoaded)) {
             HStack {
                 
                 ZStack {
                     Color(.white)
                     
-                    if imageLoaded {
-                        Image(uiImage: beerImage)
+                    if beerRequest.imageLoaded {
+                        Image(uiImage: beerRequest.beerImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .padding([.top, .bottom])
@@ -70,18 +69,10 @@ struct BeerRow: View {
     }
     
     func displayBeerImage() {
+        
         guard let imageUrl = URL(string: beer.image_url) else { return }
-        let task = URLSession.shared.downloadTask(with: imageUrl) { location, response, error in
-                guard let location = location,
-                    let imageData = try? Data(contentsOf: location),
-                    let image = UIImage(data: imageData) else { return }
-            
-            DispatchQueue.main.async {
-                self.beerImage = image
-                self.imageLoaded = true
-            }
-        }
-        task.resume()
+        beerRequest.requestBeerImage(from: imageUrl)
+        
     }
 }
 

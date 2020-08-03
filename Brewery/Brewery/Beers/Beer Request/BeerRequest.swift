@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import SwiftUI
 
 class BeerRequest: ObservableObject {
     
     @Published var beerList = [Beer]()
     @Published var wainting = false
+    
+    @Published var beerImage = UIImage()
+    @Published var imageLoaded = false
     
     func getBeerData(from beersIds: String) {
         
@@ -32,6 +36,21 @@ class BeerRequest: ObservableObject {
             }
             
         }.resume()
+    }
+    
+    func requestBeerImage(from url: URL) {
+        
+        let task = URLSession.shared.downloadTask(with: url) { location, response, error in
+                guard let location = location,
+                    let imageData = try? Data(contentsOf: location),
+                    let image = UIImage(data: imageData) else { return }
+            
+            DispatchQueue.main.async {
+                self.beerImage = image
+                self.imageLoaded = true
+            }
+        }
+        task.resume()
     }
     
     private func retrieveBeer(from data: Data) {
