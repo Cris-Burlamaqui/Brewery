@@ -15,7 +15,7 @@
 
 **What to expect:**
 
-- The first screen is composed by a list os beers with its image, name, abv and type represented by a letter, B for Barrel Aged and C for classic.
+- The first screen is composed by a list os beers with theirs image, name, abv and type represented by a letter, B for Barrel Aged and C for classic.
 - By clicking on one of the beer's cell it shows the beer's detail view with its image, type, abv, description and an ingredient list and method.
 - By clicking on one of the items, Malts or Hops, a list of the ingredients that beer could use will be shown.
 - By clicking on the method a detail view will be swhon whit the methods that beer could apply.
